@@ -1,0 +1,4 @@
+INFO: server started
+ERROR: login failed
+INFO: user logged in
+ERROR: db down
