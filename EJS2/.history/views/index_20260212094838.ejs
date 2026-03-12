@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Pagination</title>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+
+    <% files.forEach(file => { %>
+        <img src="/<%= file %>" width="200">
+    <% }) %>
+
+    <div>
+        <% if (currentPage > 1) { %>
+            <a href="/?page=<%= currentPage - 1 %>">Prev</a>
+        <% } %>
+
+        <span> Page <%= currentPage %> of <%= totalPages %> </span>
+
+        <% if (currentPage < totalPages) { %>
+            <a href="/?page=<%= currentPage + 1 %>">Next</a>
+        <% } %>
+    </div>
+</body>
+</html>
