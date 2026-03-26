@@ -1,0 +1,6 @@
+qestion-2 Difference between findOneAndUpdate() and updateOne()
+Feature	findOneAndUpdate()	updateOne()
+Returns	The document before or after update (configurable with returnDocument option).	The update result (acknowledgment and number of modified docs).
+Use case	When you need the updated document immediately.	When you only care about performing the update, not fetching the document.
+Atomic operation	Yes, returns the document atomically after updating.	Yes, updates atomically but does not return document.
+Example:	User.findOneAndUpdate({name: 'John'}, {age: 30}, {new: true})	User.updateOne({name: 'John'}, {age: 30})

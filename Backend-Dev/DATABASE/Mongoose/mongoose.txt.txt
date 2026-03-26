@@ -1,0 +1,19 @@
+1. Advantages of using Mongoose over the native MongoDB driver
+
+Mongoose is an Object Data Modeling (ODM) library for MongoDB, which sits on top of the native driver. Its advantages include:
+
+Schema enforcement:
+Mongoose allows you to define a schema for your documents, enforcing structure, data types, and validation rules.
+Native MongoDB is schema-less, which can lead to inconsistent data.
+Validation:
+Mongoose provides built-in and custom validators to ensure data integrity before saving to the database.
+Middleware (Hooks):
+Supports pre and post hooks for operations like save, remove, update, which is not provided in native driver.
+Built-in type casting:
+Automatically converts data to the required type based on the schema (e.g., string to ObjectId).
+Query helpers and chaining:
+Provides chainable query syntax like .find().sort().limit().exec(), making queries more readable and concise.
+Virtuals & Methods:
+You can define virtual properties (computed fields) and instance/static methods on models.
+Population (joins-like functionality):
+Easily references documents from other collections using .populate(), which is complex with the native driver.

@@ -1,0 +1,33 @@
+Embedding (Denormalization)
+
+Definition: Store related data inside the parent document as nested objects or arrays.
+When to use embedding:
+One-to-few relationships:
+The embedded data is small and bounded.
+Example: A blog post with a few comments.
+{
+  "_id": 1,
+  "title": "My First Post",
+  "author": "Rahul",
+  "comments": [
+    { "user": "Priya", "text": "Nice post!" },
+    { "user": "Amit", "text": "Great!" }
+  ]
+}
+Referencing (Normalization)
+Definition: Store related data in separate collections and link them using IDs.
+One-to-many or many-to-many relationships:
+Example: Users and Orders — a user can have hundreds of orders.
+// Users collection
+{
+  "_id": 1,
+  "name": "Rahul"
+}
+
+// Orders collection
+{
+  "_id": 101,
+  "userId": 1,
+  "product": "Book",
+  "price": 200
+}
