@@ -1,0 +1,69 @@
+1. Find all products with price greater than 500
+db.products.find({ price: { $gt: 500 } })
+
+2. Get all products in "Accessories" category with stock greater than 50
+db.products.find({ category: "Accessories", stock: { $gt: 50 } })
+
+3. Find products where RAM is 8GB
+db.products.find({ "specs.ram": "8GB" })
+
+4. Get products that have the tag "gaming"
+db.products.find({ tags: "gaming" })
+
+5. Sort all products by price in descending order
+db.products.find().sort({ price: -1 })
+
+6. Get top 5 cheapest products
+db.products.find().sort({ price: 1 }).limit(5)
+
+7. Count the number of products in "Phones" category
+db.products.countDocuments({ category: "Phones" })
+
+8. Find products with stock between 20 and 100
+db.products.find({ stock: { $gte: 20, $lte: 100 } })
+
+9. Get only name and price of all products (exclude _id)
+db.products.find({}, { _id: 0, name: 1, price: 1 })
+
+10. Find products where price > 500 AND category is "Laptops"
+db.products.find({ price: { $gt: 500 }, category: "Laptops" })
+
+11. Find products where price is between 100 and 500
+db.products.find({ price: { $gte: 100, $lte: 500 } })
+
+12. Get products where category is NOT "Accessories"
+db.products.find({ category: { $ne: "Accessories" } })
+
+13. Find products with stock less than 20
+db.products.find({ stock: { $lt: 20 } })
+
+14. Get products that have BOTH "gaming" and "office" tags
+db.products.find({ tags: { $all: ["gaming", "office"] } })
+
+15. Find products where storage is greater than or equal to 512
+db.products.find({ "specs.storage": { $gte: 512 } })
+
+16. Get total stock of all products
+db.products.aggregate([
+  { $group: { _id: null, totalStock: { $sum: "$stock" } } }
+])
+
+17. Find the highest priced product
+db.products.find().sort({ price: -1 }).limit(1)
+
+18. Find products whose name contains "Phone"
+db.products.find({ name: { $regex: "Phone", $options: "i" } })
+
+19. Get count of products in each category along with average price
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      count: { $sum: 1 },
+      avgPrice: { $avg: "$price" }
+    }
+  }
+])
+
+20. Find products with stock > 50 and price < 200
+db.products.find({ stock: { $gt: 50 }, price: { $lt: 200 } })
